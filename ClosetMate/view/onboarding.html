@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onboarding - ClosetMate</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-default">
+  <div class="onboarding-container">
+    <div class="glass-card">
+      <h2>Welcome to ClosetMate</h2>
+      <p>Let’s set up your profile and closet.</p>
+
+      <!-- Profile Info -->
+      <h3>Profile Information</h3>
+      <div class="file-upload">
+        <input type="file" id="profilePic" accept="image/*" hidden>
+        <label for="profilePic" class="btn btn-secondary">Upload Profile Picture</label>
+        <div id="profilePicPreview" class="file-preview"></div>
+      </div>
+
+       <div class="input-wrapper">
+        <input type="text" id="name" placeholder=" " required>
+        <label for="name">Nickname</label>
+      </div>
+
+      <div class="input-wrapper">
+        <input type="date" id="dob" placeholder="Birthdate">
+      </div>
+
+      <div class="input-wrapper">
+        <select id="gender">
+          <option value="" disabled selected>Select Gender</option>
+          <option>Female</option>
+          <option>Male</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <!-- Closet Setup -->
+      <h3>Closet Setup</h3>
+      <div class="file-upload">
+        <input type="file" id="closetUpload" multiple hidden>
+        <label for="closetUpload"class="btn btn-secondary">Upload Clothing Items</label>
+        <div id="closetFiles" class="file-name">No files chosen</div>
+      </div>
+
+      <!-- Actions -->
+      <div class="form-actions">
+        <button class="btn btn-primary">Save & Continue</button>
+        <button class="btn btn-primary">Skip for Now</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
