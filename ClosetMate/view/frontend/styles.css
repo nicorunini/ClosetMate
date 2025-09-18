@@ -1,11 +1,3 @@
-/* =====================================================
-   Global Glassmorphism Design System
-   - Floating-label inputs (from your original login)
-   - Glass cards, buttons, tags, toggles, uploads
-   - Theme variants: default, dark, sunset, nature
-   - Consistent spacing, logo/header, animations
-   ===================================================== */
-
 /* ===========================
    1. Base Theme Variables
 =========================== */
@@ -201,9 +193,6 @@ body{
   position:relative;
   display:flex;
   flex-direction:column;
-  margin-bottom: 20px;
-}
-.input-wrapper {
   margin: 1rem 0;
 }
 
@@ -217,11 +206,6 @@ body{
   background: var(--color-surface);
   color: var(--color-text);
 }
-
-.input-wrapper input::placeholder {
-  color: var(--color-text-muted);
-}
-
 
 /* Base input styles */
 .input-wrapper input,
@@ -294,7 +278,7 @@ body{
 .input-wrapper textarea:focus + label,
 .input-wrapper textarea:not(:placeholder-shown) + label,
 .input-wrapper select:focus + label{
-  transform: translateY(-8px) scale(.86);
+  transform: translateY(-20px) scale(.86);
   color: var(--color-secondary);
   font-weight:500;
 }
@@ -345,7 +329,7 @@ body{
 /* ===========================
    7. Buttons (primary / secondary / danger / ghost)
 =========================== */
-.btn{
+.btn {
   display:inline-block;
   border:none;
   border-radius:12px;
@@ -359,6 +343,8 @@ body{
   transition: transform .18s ease, box-shadow .18s ease;
   text-align:center;
   min-width:120px;
+
+  text-decoration: none; /* 🚀 removes underline */
 }
 .btn:hover{ transform: translateY(-3px); box-shadow: 0 14px 30px var(--shadow-hover); }
 .btn:active{ transform: translateY(0); }
@@ -414,29 +400,6 @@ input[type="checkbox"] {
   display: none;
 }
 
-/* Toggle track */
-.toggle {
-  background-color: grey;
-  width: 40px;       /* smaller width */
-  height: 20px;      /* smaller height */
-  border-radius: 20px;
-  position: relative;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-/* Toggle knob */
-.slider {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  height: 16px;
-  width: 16px;
-  background-color: white;
-  border-radius: 50%;
-  transition: transform 0.3s ease;
-}
-
 /* Checked state */
 input:checked + .toggle {
   background-color: green;
@@ -448,13 +411,7 @@ input:checked + .toggle .slider {
 
 
 /* === Icon Scaling === */
-button img,
-.file-upload label img {
-  width: 16px;
-  height: 16px;
-  vertical-align: middle;
-  margin-right: 6px;
-}
+
 header .logo {
   width: 24px;
   height: 24px;
@@ -582,13 +539,6 @@ option{ background:rgba(0,0,0,0.6); color:var(--color-text); }
 }
 .col{ flex:1; min-width:0; } /* responsive columns */
 
-.form-actions{
-  display:flex;
-  gap:12px;
-  margin-top: 20px;
-  flex-wrap:wrap;
-}
-
 /* compact form layout */
 .inline-group{ display:flex; gap:12px; align-items:center; }
 
@@ -638,41 +588,6 @@ option{ background:rgba(0,0,0,0.6); color:var(--color-text); }
   cursor: not-allowed;
 }
 
-/* Toggle switch enhancements */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 50px;
-  height: 28px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid var(--color-border);
-  transition: background 0.25s ease, box-shadow 0.25s ease;
-}
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-.switch .knob {
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  height: 22px;
-  width: 22px;
-  border-radius: 50%;
-  background: #fff;
-  transition: transform 0.25s cubic-bezier(.2,.9,.2,1);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-.switch input:checked + .knob {
-  transform: translateX(22px);
-}
-.switch input:checked ~ .switch {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-  box-shadow: 0 4px 14px var(--shadow-primary);
-}
-
 /* Custom select arrow fix */
 .input-wrapper select {
   appearance: none;
@@ -715,5 +630,98 @@ header .logo {
   border-radius: 50%;
   margin-top: 0.5rem;
   display: block;
+}
+.form-actions {
+  display: flex;
+  gap: 12px; /* spacing between buttons */
+  justify-content: center; /* center them */
+  margin-top: 20px;
+}
+.settings-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px;
+}
+
+.settings-section {
+  margin: 24px 0;
+  border-top: 1px solid var(--color-border-light, rgba(0,0,0,0.1));
+  padding-top: 16px;
+}
+
+.settings-section h3 {
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+  color: var(--color-primary);
+}
+
+.connected-accounts {
+  margin: 16px 0;
+}
+
+.toggle-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 12px 0;
+  cursor: pointer;
+}
+
+.toggle-wrapper input {
+  display: none;
+}
+
+.toggle-slider {
+  width: 40px;
+  height: 20px;
+  border-radius: 20px;
+  background: #ccc;
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.toggle-slider::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: white;
+  transition: transform 0.3s ease;
+}
+
+.toggle-wrapper input:checked + .toggle-slider {
+  background: var(--color-primary);
+}
+
+.toggle-wrapper input:checked + .toggle-slider::before {
+  transform: translateX(20px);
+}
+
+.danger-zone {
+  border-top: 1px solid rgba(255,0,0,0.2);
+  margin-top: 32px;
+  padding-top: 16px;
+}
+
+.btn-danger {
+  background: #ef4444;
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(239,68,68,0.25);
+}
+/* Float label when dropdown has value */
+.input-wrapper select:focus + label,
+.input-wrapper select:not([value=""]):valid + label {
+  top: -10px;   /* float higher */
+  font-size: 12px;
+  opacity: 0.85;
+}
+.top-nav img {
+  width: 28px;   /* standard width */
+  height: 28px;  /* standard height */
+  flex-shrink: 0; /* prevents distortion in flex layouts */
 }
 
